@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!--
+  {% if success %}
+    <p>Thank you for your message. We'll get back to you shortly.</p>
+  
+  {% else %}  
+    {% for message in form.UserMail.errors %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+    {% for message in form.Name.errors %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+    {% for message in form.SourceNumber.errors %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+    {% for message in form.DestinationNumber.errors %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+     {% for message in form.Gender.errors %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
+
+
+    --> 
+    <form action="{{ url_for('contact') }}" method=post>
+      {{ form.hidden_tag() }}
+      
+      {{ form.UserMail.label }}
+      {{ form.UserMail }}
+
+      {{ form.Name.label }}
+      {{ form.Name }}
+
+      {{ form.SourceNumber.label }}
+      {{ form.SourceNumber }}
+      
+      {{ form.DestinationNumber.label }}
+      {{ form.DestinationNumber }}
+
+      {{ form.Gender.label }}
+      {{ form.Gender }}
+
+      {{ form.submit }}
+    </form>
+  
+  {% endif %}
+{% endblock %} 

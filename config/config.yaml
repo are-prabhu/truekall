@@ -1,0 +1,9 @@
+couchdb_config:
+     couchdb_host: 172.17.0.3
+     couchdb_port: 5984
+
+     couch_username: admin
+     couch_password: password
+
+     front_caller_db: callerformdb
+
