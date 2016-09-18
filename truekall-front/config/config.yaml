@@ -7,3 +7,11 @@ couchdb_config:
 
      front_caller_db: callerformdb
 
+callapi_config:
+     callapi_host: localhost
+     callapi_port: 8080
+     misscallapi_endpoint: /misskall/v1
+     callapi_secretword: ABCDXYZ
+     
+
+

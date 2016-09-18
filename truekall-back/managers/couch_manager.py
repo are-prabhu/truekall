@@ -48,4 +48,4 @@ class CouchOperations():
 		for res in db.view('_design/%sview/_view/%s' %(db.name,db.name) ):
 			return {res.id:res.key}
 
-CouchOperations.couch_insert({"hi":"test"})
+#CouchOperations.couch_insert({"hi":"test"})

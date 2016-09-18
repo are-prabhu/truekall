@@ -1,11 +1,10 @@
 from flask import Flask, render_template, request, flash
 from forms import ContactForm
 from flask.ext.mail import Mail, Message
+from managers.couch_manager import CouchOperations
+from managers.config_manager import CallAPIInfo
 import json
 import requests
-import sys
-sys.path.append('/root/callfront/src')
-from managers.couch_manager import CouchOperations
 
 app = Flask(__name__)
 
@@ -35,15 +34,27 @@ def contact():
       payload["Name"] = form.Name.data
       payload["SourceNumber"] = form.SourceNumber.data
       payload["DestinationNumber"] = form.DestinationNumber.data
-      payload["Gender"] = form.Gender.data
 
-      print payload
+      if form.Gender.data == "True":
+	payload["Gender"] = "Male"
+      else:
+	payload["Gender"] = "Female"
 
-      url = "http://10.0.1.142:8080/"
+
+      CouchOperations.couch_insert(payload)
+
+      payload["SecretWord"] = CallAPIInfo.callapi_secretword
+
+      url = "http://%s:%s%s" % (CallAPIInfo.callapi_host,CallAPIInfo.callapi_port,CallAPIInfo.misscall_endpoint)
       headers = {'content-type': 'application/json'}
-      requests.post(url, data=json.dumps(payload), headers=headers)
-
-      return render_template('contact.html', success=True)
+      results = requests.post(url, data=json.dumps(payload), headers=headers)
+      results = str(results.json())
+      results = eval(results)
+	
+      if int(results.keys()[0]) == 200:
+        return render_template('success.html')
+      else:
+        return render_template('fail.html')
   
   
   if request.method == 'GET':

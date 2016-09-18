@@ -44,6 +44,7 @@ class CouchInfo:
 	config_obj = ConfigManager.get_instance()
         config = config_obj.dataMap
         envblock = config.get(COUCH_CONFIG,{})
+
 	couch_host = str(envblock[COUCH_HOST])
 	couch_port = str(envblock[COUCH_PORT])
 	couch_user = str(envblock[COUCH_USER])
@@ -52,11 +53,46 @@ class CouchInfo:
 	
 
 
+######################### CALLERAPI INFO #########################
+
+
+CALLERAPI_CONFIG = "callapi_config"
+CALLERAPI_HOST = "callapi_host"
+CALLERAPI_PORT = "callapi_port"
+CALLERAPI_SECWRD = "callapi_secretword"
+
+class CallAPIInfo:
+        config_obj = ConfigManager.get_instance()
+        config = config_obj.dataMap
+	envblock = config.get(CALLERAPI_CONFIG,{})
+
+	callapi_host = str(envblock[CALLERAPI_HOST])
+	callapi_port = str(envblock[CALLERAPI_PORT])
+	callapi_secretword = str(envblock[CALLERAPI_SECWRD])
 
 
 
 
 
+########################### PLIVO INFO ############################
 
 
+PLIVO_CONFIG = "plivo_config"
+PLIVO_AUTH_ID = "plivo_auth_id"
+PLIVO_AUTH_TOKEN = "plivo_auth_token"
+PLIVO_NUMBER = "plivo_number"
+PLIVO_ANSWER_URL = "plivo_answer_url"
+PLIVO_HANG_ONRING = "plivo_hang_onring"
 
+
+class PlivoInfo:
+        config_obj = ConfigManager.get_instance()
+        config = config_obj.dataMap
+        envblock = config.get(PLIVO_CONFIG,{})
+
+	plivo_auth_id = str(envblock[PLIVO_AUTH_ID])
+	plivo_auth_token = str(envblock[PLIVO_AUTH_TOKEN])
+	plivo_number = str(envblock[PLIVO_NUMBER])
+	plivo_answer_url = str(envblock[PLIVO_ANSWER_URL])
+	plivo_hang_onring = str(envblock[PLIVO_HANG_ONRING])
+	

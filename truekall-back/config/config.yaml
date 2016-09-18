@@ -1,0 +1,23 @@
+couchdb_config:
+     couchdb_host: 172.17.0.3
+     couchdb_port: 5984
+
+     couch_username: admin
+     couch_password: password
+
+     front_caller_db: callerformdb
+
+callapi_config:
+     callapi_host: 0.0.0.0
+     callapi_port: 8080
+
+     callapi_secretword: ABCDXYZ
+
+plivo_config:
+     plivo_auth_id: XXXXXXXXXXXXXXXXXXXX
+     plivo_auth_token: YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+
+     plivo_number: 1111111111111111
+     plivo_answer_url: http://hidden-plateau-8325.herokuapp.com/response/conference/
+
+     plivo_hang_onring: 3 
